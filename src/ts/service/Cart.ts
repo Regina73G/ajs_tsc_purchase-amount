@@ -12,15 +12,15 @@ export default class Cart {
     }
 
     calculateAmount(): number {
-        return this._items.reduce((sum, item) => sum + item.price, 0);
+        return this._items.reduce((sum: number, item: Buyable) => sum + item.price, 0);
     }
     
     calculateAmountAfterDiscount (discount: number): number {
-        const summ = this._items.reduce((sum, item) => sum + item.price, 0);
+        const summ: number = this.calculateAmount();
         return summ - (summ * discount);
     }
 
     removeProduct(deletedProduct: number ): void {
-        this._items = this._items.filter(obj => obj.id !== deletedProduct);
+        this._items = this._items.filter((obj: Buyable) => obj.id !== deletedProduct);
     }
 }
